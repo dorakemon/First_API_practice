@@ -37,12 +37,26 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # add
+    'django.contrib.sites',
 
     # django-crispy-forms   
     'crispy_forms',
 
     # rest_framework
     'rest_framework',
+    'rest_framework.authtoken',
+
+    # pip install django-rest-auth
+    # pip install django-allauth
+    # pip install django-registration
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    'rest_auth',
+    'rest_auth.registration',
 
     'keijiban',
     'users',
@@ -128,5 +142,30 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
+LOGIN_URL = "/accounts/login/"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
+
 # add
 AUTH_USER_MODEL = "users.CustomUser"
+
+#add
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+SITE_ID = 1
+
+ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_EMAIL_REQUIRED = (True)
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 5 # 10 could be a good value to assign in production. Remember: this currently also applies to answers
+}
