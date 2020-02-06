@@ -34,4 +34,6 @@ urlpatterns = [
     path('accounts/', include("django.contrib.auth.urls")),
 
     path('api/', include("users.api.urls")),
+
+    path("api/", include("keijiban.api.urls")),
 ]
