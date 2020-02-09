@@ -58,6 +58,14 @@ INSTALLED_APPS = [
     'rest_auth',
     'rest_auth.registration',
 
+    # after js webpack
+    'webpack_loader',
+
+    # for cors problem
+    # pip install django-cors-headers
+    # https://qiita.com/HIJIKI/items/ed4badee7ef37e30b957 
+    'corsheaders',
+
     'keijiban',
     'users',
 ]
@@ -70,6 +78,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'corsheaders.middleware.CorsMiddleware',             #add for cors
+    'django.middleware.common.CommonMiddleware',         #add for cors
 ]
 
 ROOT_URLCONF = 'tutorial.urls'
@@ -169,3 +180,47 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 5 # 10 could be a good value to assign in production. Remember: this currently also applies to answers
 }
+
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'dist/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'frontend', 'webpack-stats.json'),
+        #'STATS_FILE': os.path.join("C:\\Users\\kenon\Desktop\\try\\QuestionTime\\frontend\\webpack-stats.json"),
+    }
+}
+
+
+#for cors
+# CORS_ORIGIN_WHITELIST = (
+#     'localhost:3000/',
+#     'localhost:3000',
+# )
+
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ALLOW_WHITELIST = (
+    'http://localhost:8080',
+    'http://127.0.0.1:8080',
+    # may needless
+    'http://127.0.0.1:8000',
+    'http://127.0.0.1:8000',
+    'http://127.0.0.1:8000/'
+)
+
+CORS_ALLOW_METHODS = (
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS'
+)
+
+CORS_ALLOW_HEADERS = (
+    'x-requested-with',
+    'content-type',
+    'accept',
+    'origin',
+    'authorization',
+    'x-csrftoken'
+)
