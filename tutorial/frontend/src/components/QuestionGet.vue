@@ -5,7 +5,7 @@
         <b-card
           :title= "value.content"
           tag="article"
-          class="mt-5 lg-sm-10 mb-3"
+          class="mt-5 lg-sm-10"
         >
         <b-card-text>
           {{value.author}}
