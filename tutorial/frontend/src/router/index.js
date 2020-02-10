@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Say from "../views/Say.vue";
+import NotFound from "../views/NotFound.vue";
 
 Vue.use(VueRouter);
 
@@ -15,6 +16,11 @@ const routes = [
     path: "/say",
     name: "say",
     component: Say
+  },
+  {
+    path: "*",
+    name: "page-not-found",
+    component: NotFound
   }
   // {
   //   path: "/about",

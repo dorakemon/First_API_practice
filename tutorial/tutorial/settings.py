@@ -182,6 +182,7 @@ REST_FRAMEWORK = {
 }
 
 
+# webpackを読み込むファイル選択
 WEBPACK_LOADER = {
     'DEFAULT': {
         'BUNDLE_DIR_NAME': 'dist/',
@@ -191,36 +192,10 @@ WEBPACK_LOADER = {
 }
 
 
-#for cors
-# CORS_ORIGIN_WHITELIST = (
-#     'localhost:3000/',
-#     'localhost:3000',
-# )
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ALLOW_WHITELIST = (
     'http://localhost:8080',
     'http://127.0.0.1:8080',
-    # may needless
-    'http://127.0.0.1:8000',
-    'http://127.0.0.1:8000',
-    'http://127.0.0.1:8000/'
 )
 
-CORS_ALLOW_METHODS = (
-    'GET',
-    'POST',
-    'PUT',
-    'PATCH',
-    'DELETE',
-    'OPTIONS'
-)
-
-CORS_ALLOW_HEADERS = (
-    'x-requested-with',
-    'content-type',
-    'accept',
-    'origin',
-    'authorization',
-    'x-csrftoken'
-)

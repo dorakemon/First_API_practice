@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <QuestionGet/>
+    <QuestionGet />
   </div>
 </template>
 

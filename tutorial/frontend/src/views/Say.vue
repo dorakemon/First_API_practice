@@ -1,6 +1,6 @@
 <template>
   <div class="say">
-    <QuestionPost/>
+    <QuestionPost />
   </div>
 </template>
 
